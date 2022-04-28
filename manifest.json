@@ -3,17 +3,36 @@
     "description": "QA extension to help with Target testing!",
     "version": "1.0",
     "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"] 
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
         }
     ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "inject-script.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "devtools_page": "devtools-page.html",
     "permissions": [
-        "tabs"
+        "tabs",
+        "activeTab"
     ],
     "action": {
         "default_popup": "popup.html",
         "default_icon": "merkle_icon.png"
-      }
-  }
+    }
+}
