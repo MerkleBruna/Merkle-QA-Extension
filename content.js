@@ -1,28 +1,13 @@
-const toggleButton = () => {
-  let button = document.getElementById("switch");
-  button.addEventListener('click', () => {
-      if(button.value=="true"){
-          button.value="false";}
-      else if(button.value=="false"){
-          button.value="true";}
-
-  })
-};
-
-const fireMbox = () => {
-    adobe.target.getOffer({
+let actualCode = `javascript: 
+    adobe.target.trackEvent({
         "mbox": "merkle-qacam",
         "params": {
-           "qa-mode": "true"
-        },
-        "success": function(offer) {
-              adobe.target.applyOffer( {
-                 "mbox": "merkle-qacam",
-                 "offer": offer
-              });
-        },
-        "error": function(status, error) {
-            console.log('Error', status, error);
+            "qa-mode": "true"
         }
-      });
-};
+    });
+`;
+
+let script = document.createElement('script');
+script.textContent = actualCode;
+(document.head || document.documentElement).appendChild(script);
+script.remove();
