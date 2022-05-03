@@ -1,6 +1,6 @@
 {
     "name": "Merkle QA Extension",
-    "description": "QA extension to help with Target testing!",
+    "description": "QA extension to help with Target testing!!",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
@@ -12,7 +12,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "content.js"
+                "contentScript.js"
             ]
         }
     ],
@@ -29,8 +29,10 @@
     "devtools_page": "devtools-page.html",
     "permissions": [
         "tabs",
-        "activeTab"
+        "activeTab",
+        "scripting"
     ],
+    "host_permissions": ["<all_urls>"],
     "action": {
         "default_popup": "popup.html",
         "default_icon": "merkle_icon.png"

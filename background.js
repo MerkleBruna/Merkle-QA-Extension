@@ -4,9 +4,8 @@ chrome.runtime.onInstalled.addListener(() => {
 
 let adobeTarget = {};
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, response) => {
     adobeTarget[sender.tab.id] = message.target || null;
-    chrome.tabs.sendMessage(tabs[0].id, { target: adobeTarget }, function (response) {
-    });
+    response(tabs[0].id, { target: adobeTarget });
 });
 
